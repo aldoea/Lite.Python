@@ -1,0 +1,81 @@
+"{
+	'response': [{
+		'id_credential': '571e47470b212a423e8b456a',
+	 	'id_site': '56fd304c78480623038b457b',
+	 	'id_site_organization': '56cf4ff5784806152c8b456c',
+	 	'id_user': '5717b9b50c212a1d628b4568',
+	 	'balance': 100000,
+	 	'site': {
+	 		'cover': '/images/52916e52dacf4327178b4569/cover',
+		 	'small_cover': '/images/52916e52dacf4327178b4569/small_cover',
+		 	'id_site': '56fd304c78480623038b457b',
+		 	'avatar': '/images/52916e52dacf4327178b4569/avatar',
+		 	'name': 'Banorte en su empresa'
+		},		
+	 	'number': '1',
+	  	'name': 'Creaciones',
+	  	'dt_refresh': 1460160000,
+	  	'id_external': null,
+	  	'id_account': '571e55be0b212a70248b4567'
+	},
+	{
+ 		'id_credential': '571af5740b212a373e8b4570',
+	  	'id_site': '56cf5728784806f72b8b456f',
+	  	'id_site_organization': '56cf4ff5784806152c8b4568',
+	  	'id_user': '5717b9b50c212a1d628b4568',
+	  	'balance': 0,
+	  	'site': {
+	  		'cover': '/images/5474c68f0b212a194a8c3119/cover',
+		  	'small_cover': '/images/5474c68f0b212a194a8c3119/small_cover',
+		  	'id_site': '56cf5728784806f72b8b456f',
+	  		'avatar': '/images/5474c68f0b212a194a8c3119/avatar',
+	  		'name': 'SAT'
+	  	},
+	 	'number': null,
+	  	'name': 'Facturas CFDI TIB110614DK7',
+	  	'dt_refresh': 1461824097,
+	  	'id_external': null,
+	  	'id_account': '5721bbb6234283e0048b7b1d'
+	},
+	{
+ 		'id_credential': '572149fb0c212a2a628b456d',
+	  	'id_site': '56cf5728784806f72b8b456f',
+	  	'id_site_organization': '56cf4ff5784806152c8b4568',
+	  	'id_user': '5717b9b50c212a1d628b4568',
+	  	'balance': 0,
+	  	'site': {
+	  		'cover': '/images/5474c68f0b212a194a8c3119/cover',
+		  	'small_cover': '/images/5474c68f0b212a194a8c3119/small_cover',
+		  	'id_site': '56cf5728784806f72b8b456f',
+		  	'avatar': '/images/5474c68f0b212a194a8c3119/avatar',
+		  	'name': 'SAT'
+	  	},
+	 	'number': null,
+	  	'name': 'Facturas CFDI CAVL901030DL1',
+	  	'dt_refresh': 1461823454,
+	  	'id_external': null,
+	  	'id_account': '57224c34234283e1048b4567'
+	},
+	{
+ 		'id_credential': '572151e80c212a39628b4571',
+  		'id_site': '56cf5728784806f72b8b456f',
+  		'id_site_organization': '56cf4ff5784806152c8b4568',
+  		'id_user': '5717b9b50c212a1d628b4568',
+  		'balance': 0,
+	  	'site': {
+	  		'cover': '/images/5474c68f0b212a194a8c3119/cover',
+		  	'small_cover': '/images/5474c68f0b212a194a8c3119/small_cover',
+		  	'id_site': '56cf5728784806f72b8b456f',
+		  	'avatar': '/images/5474c68f0b212a194a8c3119/avatar',
+		  	'name': 'SAT'
+		},
+	 	'number': null,
+	  	'name': 'Facturas CFDI BAJU560717J56',
+	  	'dt_refresh': 1461870862,
+	  	'id_external': null,
+	  	'id_account': '57227e48234283fd5d8b4567'
+	}],
+  	'status': true,
+  	'code': 200,
+  	'message': null
+  }"

@@ -1,0 +1,50 @@
+from pymongo import MongoClient
+from json import dumps
+
+client = MongoClient("mongodb://aldo:aldo@ds049084.mlab.com:49084/lite")
+db = client['lite']
+users = db['users']
+accounts = db['accounts']
+
+def log_in(session,user, psw):
+	query = users.find_one({'user':user})
+	if query is not None:
+		if query['user'] == user and query['password'] == psw:
+			session['id_user_db'] = str(query['_id'])			
+			return True
+		else:
+			return False
+	else:
+		return False
+
+def search_user_in_db(user):
+	print("Entra Buscador de usuarios")
+	query = users.find_one({'user':user})
+	if query is not None:
+		print("Query no vacio")		
+		print(query)
+		return True
+	else:
+		print("Query Vacio")
+		return False
+
+def get_accounts(OwnerId):
+	accounts_name = []
+	query = accounts.find({'OwnerId':OwnerId})	
+	for item in query:
+		accounts_name.append(item['name'])		
+	return accounts_name
+
+def get_response(OwnerId, account_name):
+	query = accounts.find_one({'$and':[{'OwnerId': OwnerId},{'name': account_name}]})
+	return query['data']
+
+def account_exists(OwnerId, account_name):
+	query = accounts.find_one({'$and':[{'OwnerId': OwnerId},{'name': account_name}]})
+	if query is not None:
+		return True
+	else:
+		return False
+
+def modify_credentials_in_db(dicc):
+	accounts.update({'OwnerId': dicc['OwnerId'], 'name':dicc['name']},{'$set':{'credentials':dicc['credentials'],'data': dicc['data']}})
