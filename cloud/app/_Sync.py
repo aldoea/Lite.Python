@@ -55,8 +55,7 @@ def sync_account(session, request):
 def widget(session, request):
 	if 'username' in session:
 		data = {}
-		data['token'] = list(session['token'])
-		data['catalog'] = session['catalog']
+		data['token'] = session['token']
 		return render_template('widget.html', data = dumps(data))
 		
 	else:

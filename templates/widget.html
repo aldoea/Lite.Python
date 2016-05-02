@@ -91,9 +91,10 @@
                   <script type="text/javascript">
                     // Uncoment to use development environment
                     // pbWidget.setDev();
-                    console.log("Script Executed")                    
-                    console.log({{data|tojson}})
-                    pbWidget.setToken();
+                    var data_js = {{data|tojson}}
+                    var data_json = JSON.parse(data_js)
+                    var token = data_json['token']                    
+                    pbWidget.setToken(token);
                     pbWidget.chooseBank();                    
                   </script>
                   <div id="paybook-container"></div>
@@ -108,17 +109,15 @@
                   <h3 class="panel-title">View Accounts</h3>
                 </div>
                 <div class="panel-body">
-                  <div class="list-group">
-                    {% for account in data['catalog'] %}
-                        <div>{{account}}</div>
-                        <!--
-                        <% accounts.forEach(function(account){ %>
-                            <button type="button" class="list-group-item" ng-click="getTransactions('<%= account.id_account %>')">
-                            <img src="<%= host %><%= account.site.avatar %>" class="site-avatar">
-                            <%= account.site.name %>
-                            <%= account.name %>
-                            </button>-->
-                    {% endfor %}
+                  <div class="list-group">                    
+                    <!--
+                    <% accounts.forEach(function(account){ %>
+                        <button type="button" class="list-group-item" ng-click="getTransactions('<%= account.id_account %>')">
+                        <img src="<%= host %><%= account.site.avatar %>" class="site-avatar">
+                        <%= account.site.name %>
+                        <%= account.name %>
+                        </button>
+                    -->
                   </div>
                 </div>
               </div>
