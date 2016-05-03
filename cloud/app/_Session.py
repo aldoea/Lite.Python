@@ -16,7 +16,7 @@ def login(session, request):
 	if 'username' not in session:
 		if request.method == 'POST':
 			api_key = _Paybook.API_KEY
-			id_user = _Paybook.ID_USER
+			id_user = session['id_user']
 			email = request.values['email']
 			psw = request.values['password']
 			if _DB.log_in(session,email,psw):
@@ -43,6 +43,8 @@ def signup(session, request):
 			else:
 				conn = _Paybook.signup()
 				if conn.status_code == 200:
+					user['id_user'] = conn.json()['id_user']
+					session['id_user'] = conn.json()['id_user']
 					_DB.users.insert_one(user)
 					return redirect(url_for('login'))
 				else:

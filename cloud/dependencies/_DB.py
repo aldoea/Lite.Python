@@ -2,7 +2,7 @@
 from pymongo import MongoClient
 from json import dumps
 
-client = MongoClient("mongodb://aldo:aldo@ds049084.mlab.com:49084/lite")
+client = MongoClient("YOUR_DB_HERE")
 db = client['lite']
 users = db['users']
 accounts = db['accounts']
