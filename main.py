@@ -19,7 +19,7 @@ def login():
 
 @app.route("/signup", methods=['GET', 'POST'])
 def signup():
-	return _Session.signup(request)	
+	return _Session.signup(session, request)	
 
 @app.route("/catalogs")
 def catalogs():
@@ -35,13 +35,11 @@ def sync_account():
 
 @app.route("/accounts/<credential_id>", methods=['GET', 'POST'])
 def show_accounts(credential_id):
-	return credential_id
-	#return _Sync.get_accounts()
+	return _Sync.get_accounts(session, credential_id)
 
-@app.route("/accounts/<credential_id>/transactions/<transactions_id>", methods=['GET', 'POST'])
-def show_transactions(credential_id, transactions_id):
-	return credential_id + " " + transactions_id
-	#return _Sync.get_transactions(session)
+@app.route("/account/<id_account>", methods=['GET', 'POST'])
+def show_transactions(id_account):
+	return _Sync.get_transactions(session, id_account)
 
 @app.route("/widget")
 def widget():

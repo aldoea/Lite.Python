@@ -44,6 +44,8 @@ def sync_account(response, data):
 	token_json_form['token'] = data['token']
 
 	conn = requests.post(response['twofa'],headers=headers, data = dumps(data))
+	status = requests.get(response['status'], params = token_json_form)
+
 	#count = requests.get(_Constants.PAYBOOK_LINK + 'attachments/count', params = token_json_form)	
 	#accounts = requests.get(_Constants.PAYBOOK_LINK + 'accounts', params = token_json_form)
 	#attachments = requests.get(_Constants.PAYBOOK_LINK + 'attachments', params = token_json_form)
@@ -52,10 +54,12 @@ def sync_account(response, data):
 	print(_Constants.INDENT, "SYNC:________")
 	print(_Constants.INDENT, conn.url)
 	print(_Constants.INDENT, conn.status_code)
-	#print(_Constants.INDENT, conn.json())
-	if get_status(response,token_json_form):
-		return dumps({'Status':'Succes'})
-
+	print(_Constants.INDENT, "STATUS:______")
+	print(_Constants.INDENT, status.url)
+	print(_Constants.INDENT, status.status_code)
+	print(_Constants.INDENT, status.json())
+	#print(_Constants.INDENT, conn.json())	
+	return dumps(status.json())
 	#print(_Constants.INDENT, status.json())	
 
 
@@ -81,10 +85,24 @@ def signup():
 def widget():
 	pass
 
-def get_accounts():
-	print("get_accounts")
-	return dumps({'Status':'Succes'})
+def get_accounts(data):
+	accounts = accounts = requests.get(_Constants.PAYBOOK_LINK + 'accounts', params = data)
+	print(_Constants.INDENT, "ACCOUNTS:________")
+	print(_Constants.INDENT, accounts.url)
+	print(_Constants.INDENT, accounts.status_code)
+	print(_Constants.INDENT, accounts.json())
+	if accounts.status_code == 200:
+		return render_template('accounts.html', data = accounts.json()['response'])
+	else:
+		return dumps({'Status':'Unsuccess'})
 
-def get_transactions():
-	print("get_transactions")
-	return dumps({'Status':'Succes'})
+def get_transactions(data):
+	transactions = requests.get(_Constants.PAYBOOK_LINK + 'transactions', params = data)
+	print(_Constants.INDENT, "TRANSACTIONS:________")
+	print(_Constants.INDENT, transactions.url)
+	print(_Constants.INDENT, transactions.status_code)
+	print(_Constants.INDENT, transactions.json())
+	if transactions.status_code == 200:
+		return render_template('transactions.html', data = transactions.json()['response'])
+	else:
+		return dumps({'Status':'Unsuccess'})	

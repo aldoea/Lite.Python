@@ -108,45 +108,6 @@ syncAccount = function(token, name){
 	});
 }
 
-get_accounts = function(id_site){
-	var url = '/accounts/' + id_site
-	console.log(url)
-	$.ajax({
-	    // la URL para la petición
-	    url : url,
-	 
-	    // la información a enviar
-	    // (también es posible utilizar una cadena de datos)
-	    //data : {'token': token, 'name': name},
-	    data : {},
-	 
-	    // especifica si será una petición POST o GET
-	    type : 'GET',
-	 
-	    // el tipo de información que se espera de respuesta
-	    dataType : 'json',
-	 
-	    // código a ejecutar si la petición es satisfactoria;
-	    // la respuesta es pasada como argumento a la función
-	    success : function(json) {	       	
-	       	console.log("Success ajax")
-	       	console.log(json)			
-	    },
-	 
-	    // código a ejecutar si la petición falla;
-	    // son pasados como argumentos a la función
-	    // el objeto de la petición en crudo y código de estatus de la petición
-	    error : function(xhr, status) {
-	        console.log('Disculpe, existió un problema');
-	        return false;
-	    },
-	 
-	    // código a ejecutar sin importar si la petición falló o no
-	    complete : function(xhr, status) {
-	        console.log('Petición realizada');
-	    }
-	});
-}
 
 // syncAccount Buttons
 $('.btn-xs').click(function() {
@@ -158,7 +119,9 @@ $('.btn-xs').click(function() {
 	if(~button_type.indexOf('_sync')){		
 		syncAccount(input.val(), account_reference)
 	}else if(~button_type.indexOf('_see')){
-		get_accounts(id_site)
+		var url = '/accounts/' + id_site
+		window.location.href = url
+		//get_accounts(id_site)
 	}
 });	
 

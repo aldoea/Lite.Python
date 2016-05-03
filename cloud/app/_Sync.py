@@ -47,10 +47,10 @@ def sync_account(session, request):
 					break
 			response = _DB.get_response(session['id_user_db'], institution)
 			response['institution'] = institution
-			regret = _Paybook.sync_account(response, data)
+			regrex = _Paybook.sync_account(response, data)
 			#f = open('response.json', 'w')
 			#f.write(dumps(regret, sort_keys=True, indent=4, separators=(',', ': ')))
-			return regret
+			return regrex
 
 def widget(session, request):
 	if 'username' in session:
@@ -61,8 +61,20 @@ def widget(session, request):
 	else:
 		return redirect(url_for('login'))
 
-#def get_accounts():
-#	return _Paybook.get_accounts()
+def get_accounts(session, id_site):
+	if 'username' in session:
+		data_to_send = {}
+		data_to_send['token'] = session['token']
+		data_to_send['id_site'] = id_site
+		return _Paybook.get_accounts(data_to_send)
+	else: 
+		return redirect(url_for('login'))
 
-def get_transactions():
-	return _Paybook.get_transactions()
+def get_transactions(session, id_account):
+	if 'username' in session:
+		data_to_send = {}
+		data_to_send['token'] = session['token']
+		data_to_send['id_account'] = id_account		
+		return _Paybook.get_transactions(data_to_send)
+	else: 
+		return redirect(url_for('login'))
