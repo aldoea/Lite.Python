@@ -1,3 +1,4 @@
+# -​*- coding: utf-8 -*​-import os
 from ..dependencies import _Paybook
 from ..dependencies import _DB
 from ..dependencies import _Constants
@@ -14,7 +15,6 @@ def credentials(session, request):
 	if 'username' in session:
 		if request.method == 'POST':			
 			institution = request.values['name']
-			id_site  = ""
 			data_to_send = {}
 			data_to_send['token'] = session['token']
 			data_to_send['name'] = "donmikeazul@hotmail.com"
@@ -60,3 +60,9 @@ def widget(session, request):
 		
 	else:
 		return redirect(url_for('login'))
+
+#def get_accounts():
+#	return _Paybook.get_accounts()
+
+def get_transactions():
+	return _Paybook.get_transactions()

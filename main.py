@@ -1,4 +1,4 @@
-import os
+# -​*- coding: utf-8 -*​-import os
 from json import dumps
 from flask import Flask
 from flask import render_template, url_for , request, redirect, session, escape
@@ -31,6 +31,16 @@ def credentials():
 @app.route("/sync_account", methods=['GET', 'POST'])
 def sync_account():
 	return _Sync.sync_account(session, request)	
+
+@app.route("/accounts/<credential_id>", methods=['GET', 'POST'])
+def show_accounts(credential_id):
+	return credential_id
+	#return _Sync.get_accounts()
+
+@app.route("/accounts/<credential_id>/transactions/<transactions_id>", methods=['GET', 'POST'])
+def show_transactions(credential_id, transactions_id):
+	return credential_id + " " + transactions_id
+	#return _Sync.get_transactions(session)
 
 @app.route("/widget")
 def widget():

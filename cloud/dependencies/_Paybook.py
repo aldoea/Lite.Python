@@ -1,3 +1,4 @@
+# -​*- coding: utf-8 -*​-
 import requests
 from . import _DB
 from . import _Constants
@@ -10,8 +11,12 @@ def catalogs(session):
 	print(_Constants.INDENT,conn.status_code)
 	print(_Constants.INDENT,conn.url)	
 	session['catalog'] = conn.json()['response']
-	accounts_registred = _DB.get_accounts(session['id_user_db'])		
-	return render_template('catalogs.html', dicc = conn.json()['response'], accounts = accounts_registred, err = None)	
+	accounts_registred = {}	
+	query = _DB.get_accounts(session['id_user_db'])
+	if query is not None:
+		for item in query:			
+			accounts_registred[item['name']] = item['id_site']
+	return render_template('catalogs.html', dicc = conn.json()['response'], accounts = accounts_registred)	
 
 def credentials(session, data, institution):
 	conn = requests.post(_Constants.PAYBOOK_LINK + 'credentials', data = dumps(data))
@@ -37,38 +42,22 @@ def sync_account(response, data):
 	print(_Constants.INDENT, response['institution'])
 	token_json_form = {}
 	token_json_form['token'] = data['token']
+
 	conn = requests.post(response['twofa'],headers=headers, data = dumps(data))
-	status = requests.get(response['status'], params = token_json_form)
-	accounts = requests.get(_Constants.PAYBOOK_LINK + 'accounts', params = token_json_form)
-	count = requests.get(_Constants.PAYBOOK_LINK + 'attachments/count', params = token_json_form)
-	attachments = requests.get(_Constants.PAYBOOK_LINK + 'attachments', params = token_json_form)
+	#count = requests.get(_Constants.PAYBOOK_LINK + 'attachments/count', params = token_json_form)	
+	#accounts = requests.get(_Constants.PAYBOOK_LINK + 'accounts', params = token_json_form)
+	#attachments = requests.get(_Constants.PAYBOOK_LINK + 'attachments', params = token_json_form)
+	#transactions = requests.get(_Constants.PAYBOOK_LINK + 'transactions', params = token_json_form)
+
 	print(_Constants.INDENT, "SYNC:________")
 	print(_Constants.INDENT, conn.url)
 	print(_Constants.INDENT, conn.status_code)
-	print(_Constants.INDENT, conn.json())
-	print(_Constants.INDENT, "STATUS:______")
-	print(_Constants.INDENT, status.url)
-	print(_Constants.INDENT, status.status_code)
-	print(_Constants.INDENT, status.json())
-	print(_Constants.INDENT, "ACCOUNTS:______")
-	print(_Constants.INDENT, accounts.url)
-	print(_Constants.INDENT, accounts.status_code)
-	print(_Constants.INDENT, accounts.json())
-	print(_Constants.INDENT, "COUNT:______")
-	print(_Constants.INDENT, count.url)
-	print(_Constants.INDENT, count.status_code)
-	print(_Constants.INDENT, count.json())
-	print(_Constants.INDENT, "ATTACHMENTS:______")
-	print(_Constants.INDENT, attachments.url)
-	print(_Constants.INDENT, attachments.status_code)
-	print(_Constants.INDENT, attachments.json())
+	#print(_Constants.INDENT, conn.json())
+	if get_status(response,token_json_form):
+		return dumps({'Status':'Succes'})
 
-	if conn.status_code == 200 or status.status_code == 200:
-		print(">>>>>>>>>>>>>>>>>>>200_CONN<<<<<<<<<<<<<<<<<<<<<<<<<<<")
-		return dumps(accounts.json())
-	else:
-		print("--------------------------NO_CONN---------------------")	
-		return dumps(status.json())
+	#print(_Constants.INDENT, status.json())	
+
 
 def login(session, email, api_key, id_user):
 	conn = requests.post(_Constants.PAYBOOK_LINK + 'sessions', data = {"api_key": api_key, "id_user": id_user})
@@ -91,3 +80,11 @@ def signup():
 
 def widget():
 	pass
+
+def get_accounts():
+	print("get_accounts")
+	return dumps({'Status':'Succes'})
+
+def get_transactions():
+	print("get_transactions")
+	return dumps({'Status':'Succes'})

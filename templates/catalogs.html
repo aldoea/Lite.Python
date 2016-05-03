@@ -72,7 +72,7 @@
     <!-- Page Content -->
         <div class="container col-md-4 col-md-offset-4">
           <form class="form-group">
-            <h2 class="form-signin-heading">Select the institutions</h2>
+            <h2 class="form-signin-heading">Select the accounts</h2>
             <div class="dropdown">
                 <button class = "dropdown-style" id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Select
@@ -101,9 +101,7 @@
                         <th>Cuenta</th>
                         <th>Token</th>
                         <th>Sincronizar</th>
-                        {% if err %}
-                            <th>Status</th>
-                        {% endif %}
+                        <th>Counts</th>                    
                     </tr>
                 </thead>
                 <tbody>
@@ -112,10 +110,8 @@
                     <tr id ="{{account}}_row">
                         <td>{{account}}</td>
                         <td><input type="text" class="form-control" name="token" id="{{account_id}}_token"></td>
-                        <td><button type="button" class="btn btn-xs btn-primary" name="{{account}}">Sincronizar</td>
-                        {% if err %}
-                            <td>err</td>
-                        {% endif %}
+                        <td><button type="button" class="btn btn-xs btn-primary" name="{{account_id}}_sync" value="{{accounts[account]}}" id="{{account}}">Sincronizar</td>
+                        <td><button type="button" class="btn btn-xs btn-success" name="{{account_id}}_see" value="{{accounts[account]}}" id="{{account}}">Ver cuentas</td>                      
                     </tr>
                 {% endfor %}
                 </tbody>

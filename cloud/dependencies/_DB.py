@@ -1,3 +1,4 @@
+# -​*- coding: utf-8 -*​-import os
 from pymongo import MongoClient
 from json import dumps
 
@@ -29,11 +30,8 @@ def search_user_in_db(user):
 		return False
 
 def get_accounts(OwnerId):
-	accounts_name = []
 	query = accounts.find({'OwnerId':OwnerId})	
-	for item in query:
-		accounts_name.append(item['name'])		
-	return accounts_name
+	return query	
 
 def get_response(OwnerId, account_name):
 	query = accounts.find_one({'$and':[{'OwnerId': OwnerId},{'name': account_name}]})

@@ -1,3 +1,4 @@
+# -​*- coding: utf-8 -*​-import os
 from ..dependencies import _DB
 from ..dependencies import _Constants
 from ..dependencies import _Paybook
