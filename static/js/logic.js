@@ -1,11 +1,4 @@
-//var credentials = {}
 var account;
-
-consoler = function(params){
-	console.log(params)		
-	//console.log(credentials)
-	//credentials = {}
-}
 
 get_credentials = function(){
 	account_id = account.replace(/\s/g, "_")
@@ -40,34 +33,18 @@ validate_credentials = function(credentials){
 	    // la respuesta es pasada como argumento a la función
 	    success : function(json) {
 	       	accounts_table.show()
-			location.reload()
-	       	console.log("Success ajax")
-	       	console.log(json)
-			/*
-	       	if($("#" + credentials['name'].replace(/\s/g, "_") + "_row").length == 0){
-				//Horray you have the row you specified.
-				$(document).ready(function() {
-					$(tbody).append('<tr id ="' + account_id + '_row"><td>' + account_id + '</td><td><input type="text" class="form-control" name="token" id="' + account_id
-					 + '_token"></td><td><button type="button" class="btn btn-xs btn-primary" name="' + account_id + '">Sincronizar</td></tr>');
-
-				});
-			}
-			*/
-			//return true;
+			location.reload()	       
 	    },
 	 
 	    // código a ejecutar si la petición falla;
 	    // son pasados como argumentos a la función
 	    // el objeto de la petición en crudo y código de estatus de la petición
-	    error : function(xhr, status) {
-	        console.log('Disculpe, existió un problema');
+	    error : function(xhr, status) {	        
 	        return false;
 	    },
 	 
 	    // código a ejecutar sin importar si la petición falló o no
-	    complete : function(xhr, status) {
-	        console.log('Petición realizada');
-	    }
+	    complete : function(xhr, status) {}
 	});
 }
 
@@ -88,28 +65,23 @@ syncAccount = function(token, name){
 	 
 	    // código a ejecutar si la petición es satisfactoria;
 	    // la respuesta es pasada como argumento a la función
-	    success : function(json) {	       	
-	       	console.log("Success ajax")
-	       	console.log(json)			
+	    success : function(json) {	       		       		       	
 	    },
 	 
 	    // código a ejecutar si la petición falla;
 	    // son pasados como argumentos a la función
 	    // el objeto de la petición en crudo y código de estatus de la petición
-	    error : function(xhr, status) {
-	        console.log('Disculpe, existió un problema');
+	    error : function(xhr, status) {	        
 	        return false;
 	    },
 	 
 	    // código a ejecutar sin importar si la petición falló o no
-	    complete : function(xhr, status) {
-	        console.log('Petición realizada');
+	    complete : function(xhr, status) {	        
 	    }
 	});
 }
 
-
-// syncAccount Buttons
+//// BUTTONS LOGIC:
 $('.btn-xs').click(function() {
 	// reference clicked button via: $(this)
 	var account_reference = $(this).attr('id');	
@@ -125,14 +97,14 @@ $('.btn-xs').click(function() {
 	}
 });	
 
-// get account from dropdown
+// GET ACCOUNT FROM DROPDOWN:
 $("#accounts li").click(function() {
 	account = $(this).text().trim()    
 });
 
+// HIDE TABLE:
 var accounts_table = $("#accounts_table");
 var tbody = $("#accounts_table tbody");
-
 if (tbody.children().length == 0) {	
 	accounts_table.hide()    
 }

@@ -50,7 +50,7 @@ def logout():
 	return _Session.logout(session)	
 
 if __name__ == "__main__":
-	app.debug = True
+	app.debug = False
 	app.run()	
 	url_for('static', filename='bootstrap.css')
 	url_for('static', filename='bootstrap.min.css')

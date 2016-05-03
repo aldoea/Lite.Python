@@ -27,10 +27,8 @@ def credentials(session, request):
 						credential_name = credential['name']
 						data_to_send['credentials'][credential_name] = request.values[credential_name]
 					break
-			return _Paybook.credentials(session, data_to_send, institution)			
-			#return redirect(url_for('catalogs'))
-		else:
-			print(_Constants.INDENT,"WTF!")
+			return _Paybook.credentials(session, data_to_send, institution)				
+			
 
 def sync_account(session, request):
 	if 'username' in session:

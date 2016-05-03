@@ -15,9 +15,8 @@ def index(session):
 def login(session, request):
 	if 'username' not in session:
 		if request.method == 'POST':
-			##########################################PAYBOOK CREDENTIALS ########################????????
-			api_key = "95742121cd6005399898c014a21fe785"
-			id_user = "5717b9b50c212a1d628b4568"
+			api_key = _Paybook.API_KEY
+			id_user = _Paybook.ID_USER
 			email = request.values['email']
 			psw = request.values['password']
 			if _DB.log_in(session,email,psw):
@@ -40,7 +39,6 @@ def signup(session, request):
 				'date': datetime.datetime.utcnow()			
 			}
 			if _DB.search_user_in_db(email):
-				print(_Constants.INDENT, "Usuario Existente")
 				return render_template('signup.html', err = "Usuario en uso")
 			else:
 				conn = _Paybook.signup()

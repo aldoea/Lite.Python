@@ -18,15 +18,11 @@ def log_in(session,user, psw):
 	else:
 		return False
 
-def search_user_in_db(user):
-	print("Entra Buscador de usuarios")
+def search_user_in_db(user):	
 	query = users.find_one({'user':user})
-	if query is not None:
-		print("Query no vacio")		
-		print(query)
+	if query is not None:				
 		return True
-	else:
-		print("Query Vacio")
+	else:		
 		return False
 
 def get_accounts(OwnerId):
