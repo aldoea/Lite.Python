@@ -1,7 +1,7 @@
 # -​*- coding: utf-8 -*​-import os
-from cloud.dependencies import _DB
-from cloud.dependencies import _Constants
-from cloud.dependencies import _Paybook
+from cloud.dependencies import db as _DB
+from cloud.dependencies import constants as _Constants
+from cloud.dependencies import paybook  as _Paybook
 import datetime
 import requests
 from flask import render_template, redirect, url_for
