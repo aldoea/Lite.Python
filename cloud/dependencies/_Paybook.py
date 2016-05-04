@@ -1,7 +1,7 @@
 # -​*- coding: utf-8 -*​-
 import requests
-from . import _DB
-from . import _Constants
+from cloud.dependencies import _DB
+from cloud.dependencies import _Constants
 from json import dumps
 from flask import render_template, redirect, url_for
 
