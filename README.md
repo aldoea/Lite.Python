@@ -19,7 +19,7 @@ A light and simple web application to demonstrate how to take advantage of the P
 	PAYBOOK_LINK = 'https://sync.paybook.com/v1/'
 	API_KEY = "YOUR_PAYBOOK_KEY_HERE"
 ```
-2. Configure yout mongoDB in /cloud/dependencies/_DB.py
+2. Configure your mongoDB in /cloud/dependencies/_DB.py
 ```Python
   	client = MongoClient("YOUR_DB_HERE")
 	db = client['lite']
