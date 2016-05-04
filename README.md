@@ -3,7 +3,7 @@
 A light and simple web application to demonstrate how to take advantage of the Paybook Financial API (Sync) to pull information from Mexican Banks and Tax Authority.
 
 ## Requirements
-1. [Python]
+1. Python
 2. [Flask](http://flask.pocoo.org/)
 2. [Pymongo](https://api.mongodb.org/python/current/) Only for DB
 3. [Resquests](http://docs.python-requests.org/en/master/) HTTP for Humans
