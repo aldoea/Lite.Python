@@ -45,8 +45,8 @@ def login(session, email, api_key, id_user):
 	else:
 		return render_template('login.html', err = "Usuario o contraseña incorrectos")
 
-def signup():
-	conn = requests.post(_Constants.PAYBOOK_LINK + 'users', data = {"api_key":"95742121cd6005399898c014a21fe785", "name":"donmikeazul@hotmail.com"})
+def signup(email):
+	conn = requests.post(_Constants.PAYBOOK_LINK + 'users', data = {"api_key":_Constants.API_KEY, "name":email})
 	return conn
 
 def get_accounts(data):

@@ -15,7 +15,7 @@ def index(session):
 def login(session, request):
 	if 'username' not in session:
 		if request.method == 'POST':
-			api_key = _Paybook.API_KEY
+			api_key = _Constants.API_KEY
 			id_user = session['id_user']
 			email = request.values['email']
 			psw = request.values['password']
@@ -41,7 +41,7 @@ def signup(session, request):
 			if _DB.search_user_in_db(email):
 				return render_template('signup.html', err = "Usuario en uso")
 			else:
-				conn = _Paybook.signup()
+				conn = _Paybook.signup(email)
 				if conn.status_code == 200:
 					user['id_user'] = conn.json()['id_user']
 					session['id_user'] = conn.json()['id_user']
