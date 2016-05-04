@@ -1,33 +1,35 @@
-##Paybook Lite Python
+#Paybook Lite Python
 
-## Synopsis
+A light and simple web application to demonstrate how to take advantage of the Paybook Financial API (Sync) to pull information from Mexican Banks and Tax Authority.
 
-At the top of the file there should be a short introduction and/ or overview that explains **what** the project is. This description should match descriptions added for package managers (Gemspec, package.json, etc.)
+## Requirements
+1. [Python]
+2. [Flask](http://flask.pocoo.org/)
+2. [Pymongo](https://api.mongodb.org/python/current/) Only for DB
+3. [Resquests](http://docs.python-requests.org/en/master/) HTTP for Humans
+4.Sync API key 
 
-## Code Example
+## Install (cli / terminal)
+1. git clone https://github.com/Paybook/Lite.Python/
 
-Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
+## Configure
+1. Insert your api key in /cloud/dependencies/_Constants.py
+```Python
+  	# -​*- coding: utf-8 -*​-import oss
+	PAYBOOK_LINK = 'https://sync.paybook.com/v1/'
+	API_KEY = "YOUR_PAYBOOK_KEY_HERE"
+```
+2. Configure yout mongoDB in /cloud/dependencies/_DB.py
+```Python
+  	client = MongoClient("YOUR_DB_HERE")
+	db = client['lite']
+	users = db['users']
+	accounts = db['accounts']
+```
 
-## Motivation
-
-A short description of the motivation behind the creation and maintenance of the project. This should explain **why** the project exists.
-
-## Installation
-
-Provide code examples and explanations of how to get the project.
-
-## API Reference
-
-Depending on the size of the project, if it is small and simple enough the reference docs can be added to the README. For medium size to larger projects it is important to at least provide a link to where the API reference docs live.
-
-## Tests
-
-Describe and show how to run the tests with code examples.
-
-## Contributors
-
-Let people know how they can dive into the project, include important links to things like issue trackers, irc, twitter accounts if applicable.
-
-## License
-
-A short snippet describing the license (MIT, Apache, etc.)
+## Execute (cli / terminal)
+1. In paybook-lite directory type **python main.py** command
+2. Open a browser [http://localhost:5000/signup](http://localhost:5000/signup)
+3. Create a new user
+4. Login [http://localhost:5000/login](http://localhost:5000/login)
+5. Add a site account in catalogs [http://localhost:5000/catalogs](http://localhost:5000/catalogs)
