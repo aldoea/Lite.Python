@@ -1,10 +1,11 @@
 # -​*- coding: utf-8 -*​-import os
 import sqlite3
 from json import dumps, loads
+from cloud.dependencies import constants as _Constants
 #from pymongo import MongoClient
 #from json import dumps
 
-connection = sqlite3.connect(":memory:", check_same_thread=False)
+connection = sqlite3.connect(_Constants.DB, check_same_thread=False)
 cur = connection.cursor()
 
 # Create table
