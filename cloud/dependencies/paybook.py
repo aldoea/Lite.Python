@@ -44,7 +44,7 @@ def login(session, email, api_key, id_user):
 		session['token'] = conn.json()['response']['token']		
 		return redirect(url_for('catalogs'))
 	else:
-		return render_template('login.html', err = "Usuario o contraseña incorrectos")
+		return render_template('login.html', err = "Usuario o contraseña incorrectos".decode('utf-8'))
 
 def signup(email):
 	conn = requests.post(_Constants.PAYBOOK_LINK + 'users', data = {"api_key":_Constants.API_KEY, "name":email})

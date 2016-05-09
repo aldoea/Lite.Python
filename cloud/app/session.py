@@ -22,7 +22,7 @@ def login(session, request):
 			if _DB.log_in(session,email,psw):
 				return _Paybook.login(session, email, api_key, id_user)
 			else:
-				return render_template('login.html', err = "Usuario o contraseña incorrectos")
+				return render_template('login.html', err = "Usuario o contraseña incorrectos".decode('utf-8'))
 		else:
 			return render_template('login.html', err = None)
 	else:
